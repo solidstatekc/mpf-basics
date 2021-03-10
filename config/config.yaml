@@ -46,3 +46,102 @@ flippers:
     main_coil: c_flipper_right
     activation_switch: s_right_flipper
     enable_events: machine_reset_phase_3 # needed until we create start button and all that
+
+displays:
+  window:
+    width: 800
+    height: 600
+
+slides:
+  welcome_slide:
+    widgets:
+      - type: text
+        text: PINBALL!
+        font_size: 50
+        color: red
+      - type: rectangle
+        width: 240
+        height: 60
+  attract_started:
+    widgets:
+      - text: ATTRACT MODE
+        type: text
+      - type: image
+        image: labyrinth_title
+        opacity: 0
+        y: 0%
+        animations:
+          show_slide: 
+            # - property: opacity  # This step adjusts the "opacity" value of this widget.
+            #   value: 0  # Zero means the widget is transparent
+            - property: y
+              value: -50%  # In step 1, we set x to 5% (from 7% before)
+              duration: .25s
+            - property: opacity  # This is the 2nd step in the animation. It also sets the opacity.
+              value: 1  # But in this step, we're setting it back to 1 (opaque)
+              repeat: false  # We add this so the animation repeats. Otherwise it would just run once.
+            - property: y
+              value: 80%  # In step 2, we set it back to 7%
+              repeat: false  # and repeat!
+              duration: 5050ms
+      - type: video
+        # video: mpf_hq
+        video: trailer_video
+
+
+  # start segement displays https://docs.missionpinball.org/en/latest/displays/display/alpha_numeric.html
+  segment_displays:
+    widgets:
+      - type: text
+        text: (player1|score)
+        number_grouping: true
+        min_digits: 2
+        font_name: ten_segment
+        color: blue
+        x: 620
+        y: 724
+        font_size: 240
+        anchor_x: right
+        anchor_y: bottom
+        z: 2
+  # end segment displays
+
+slide_player:
+  init_done: welcome_slide
+  mode_attract_started: attract_started
+  game_started: segment_displays
+
+keyboard:
+  z:
+    switch: s_left_flipper
+  m:
+    switch: s_right_flipper
+
+assets:
+  sounds:
+    # default:
+    #   load: on_demand
+    # music:
+    #   track: music
+    # sfx:
+    #   track: sfx
+    # voice:
+    #   track: voice
+    breakloop:
+      volume: 1.0
+      priority: 100
+  
+videos:
+  trailer_video:
+    # width: 100
+    # height: 70
+    file: trailer.mp4
+
+sound_player:
+  mode_attract_started:
+    breakloop:
+      action: play
+      loops: -1
+  mode_attract_stopped:
+    breakloop:
+      action: stop

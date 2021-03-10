@@ -1,0 +1,12 @@
+device_size: 0.02
+switch:
+  s_left_flipper:
+    shape: CIRCLE
+    size: 0.12
+    x: 0.002369846471200998
+    y: 0.9295774647887325
+  s_right_flipper:
+    shape: CIRCLE
+    size: 0.12
+    x: 0.8868094358596121
+    y: 0.9257362355953906

@@ -1,0 +1,6 @@
+2021-03-09 19:14:47,008 : INFO : root : Loading config.
+2021-03-09 19:14:47,013 : INFO : YamlMultifileConfigLoader : Machine config file #1: config.yaml
+2021-03-09 19:14:47,013 : WARNING : ConfigProcessor : Cache file not found: /var/folders/4h/jbj0b5k93cs7twq40r8vky7c0000gn/T/73b5cf40e476fa60e21eb9e98d0e8e33.mpf_cache
+2021-03-09 19:14:47,013 : INFO : ConfigProcessor : Loading config from file /Users/nickgreenup/mpf/mpfenv/lib/python3.6/site-packages/mpf/mpfconfig.yaml.
+2021-03-09 19:14:47,089 : INFO : ConfigProcessor : Loading config: /Users/nickgreenup/mpf/mpfenv/lib/python3.6/site-packages/mpf/mpfconfig.yaml
+2021-03-09 19:14:47,090 : INFO : ConfigProcessor : Loading config from file /Users/nickgreenup/Downloads/mpf-examples-dev/jumanji/monitor/config/config.yaml.
