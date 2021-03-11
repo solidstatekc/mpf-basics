@@ -7,7 +7,7 @@ fast:
   driverboards: fast
   ports: /dev/tty.usbserial-00003014B, /dev/tty.usbserial-00003014C
   watchdog: 1000
-  debug: true
+  # debug: true
 
 switches:
   s_left_flipper:
@@ -16,6 +16,35 @@ switches:
   s_right_flipper:
     number: 0-1
     tags: right_flipper
+  s_trough1:
+    number: 0-2
+    type: NC
+  s_trough2:
+    number: 0-3
+    type: NC
+  s_trough3:
+    number: 0-4
+    type: NC
+  s_trough4:
+    number: 0-5
+    type: NC
+  s_trough5:
+    number: 0-6
+    type: NC
+  s_trough6:
+    number: 0-7
+    type: NC
+  s_trough_jam:
+    number: 0-8
+    type: NC
+  s_plunger:
+    number: 0-9
+  s_start:
+    number: 0-10
+    tags: start
+  s_right_inlane:
+    number: 0-11
+    tags: playfield_active
 
 coils:
   c_flipper_left:
@@ -30,22 +59,50 @@ coils:
     default_pulse_ms: 12
     default_pulse_power: 1
     default_hold_power: 0.45
+  c_trough_eject:
+    number: 0-2
+    default_pulse_ms: 20
 
+ball_devices:
+  bd_trough:
+    ball_switches: s_trough1, s_trough2, s_trough3, s_trough4, s_trough5, s_trough6, s_trough_jam
+    eject_coil: c_trough_eject
+    tags: trough, home, drain
+    jam_switch: s_trough_jam
+    eject_coil_jam_pulse: 15ms
+    eject_targets: bd_plunger
+    # eject_timeouts: 3s
+    debug: true
+  bd_plunger:
+    ball_switches: s_plunger
+    mechanical_eject: true
+    # eject_timeouts: 5s
+  
 playfields:
   playfield:
     tags: default
-    default_source_device: None #use none in steps before 8
+    # default_source_device: None #use none in steps before 8
+    default_source_device: bd_plunger
+
+
+virtual_platform_start_active_switches:
+  - s_trough1
+  - s_trough2
+  - s_trough3
+  - s_trough4
+  - s_trough5
+  - s_trough6
 
 flippers:
   left_flipper:
     main_coil: c_flipper_left
     activation_switch: s_left_flipper
-    enable_events: machine_reset_phase_3 # needed until we create start button and all that
+    #enable_events: machine_reset_phase_3 # needed until we create start button and all that
 
   right_flipper:
     main_coil: c_flipper_right
     activation_switch: s_right_flipper
-    enable_events: machine_reset_phase_3 # needed until we create start button and all that
+    #enable_events: machine_reset_phase_3 # needed until we create start button and all that
 
 displays:
   window:
@@ -88,7 +145,6 @@ slides:
         # video: mpf_hq
         video: trailer_video
 
-
   # start segement displays https://docs.missionpinball.org/en/latest/displays/display/alpha_numeric.html
   segment_displays:
     widgets:
@@ -110,12 +166,42 @@ slide_player:
   init_done: welcome_slide
   mode_attract_started: attract_started
   game_started: segment_displays
+  ball_started:
+    widgets:
+      type: text
+      text: PLAYER (number) BALL (ball)
+      color: red
 
 keyboard:
   z:
     switch: s_left_flipper
   m:
     switch: s_right_flipper
+  s:
+    switch: s_start
+  q:
+    switch: s_right_inlane
+  p:
+    switch: s_plunger
+    toggle: true
+  1:
+    switch: s_trough1
+    toggle: true
+  2:
+    switch: s_trough2
+    toggle: true
+  3:
+    switch: s_trough3
+    toggle: true
+  4:
+    switch: s_trough4
+    toggle: true
+  5:
+    switch: s_trough5
+    toggle: true
+  6:
+    switch: s_trough6
+    toggle: true
 
 assets:
   sounds:
