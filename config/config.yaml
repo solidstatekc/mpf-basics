@@ -106,8 +106,10 @@ flippers:
 
 displays:
   window:
-    width: 800
-    height: 600
+    # width: 1404
+    # height: 1040
+    width: 1872
+    height: 1386
 
 slides:
   welcome_slide:
@@ -123,27 +125,35 @@ slides:
     widgets:
       - text: ATTRACT MODE
         type: text
+        x: 65%
+      # - type: image
+      #   image: labyrinth_title
+      #   opacity: 0
+      #   y: 0%
+      #   animations:
+      #     show_slide: 
+      #       # - property: opacity  # This step adjusts the "opacity" value of this widget.
+      #       #   value: 0  # Zero means the widget is transparent
+      #       - property: y
+      #         value: -50%  # In step 1, we set x to 5% (from 7% before)
+      #         duration: .25s
+      #       - property: opacity  # This is the 2nd step in the animation. It also sets the opacity.
+      #         value: 1  # But in this step, we're setting it back to 1 (opaque)
+      #         repeat: false  # We add this so the animation repeats. Otherwise it would just run once.
+      #       - property: y
+      #         value: 80%  # In step 2, we set it back to 7%
+      #         repeat: false  # and repeat!
+      #         duration: 5050ms
       - type: image
-        image: labyrinth_title
-        opacity: 0
-        y: 0%
-        animations:
-          show_slide: 
-            # - property: opacity  # This step adjusts the "opacity" value of this widget.
-            #   value: 0  # Zero means the widget is transparent
-            - property: y
-              value: -50%  # In step 1, we set x to 5% (from 7% before)
-              duration: .25s
-            - property: opacity  # This is the 2nd step in the animation. It also sets the opacity.
-              value: 1  # But in this step, we're setting it back to 1 (opaque)
-              repeat: false  # We add this so the animation repeats. Otherwise it would just run once.
-            - property: y
-              value: 80%  # In step 2, we set it back to 7%
-              repeat: false  # and repeat!
-              duration: 5050ms
+        #image: labyrinth_backglass # video size is width: 1200 height: 800
+        image: labyrinth_backglass-v2
       - type: video
         # video: mpf_hq
         video: trailer_video
+        x: 65%
+        y: bottom+40%
+        width: 1600
+        height: 1000
 
   # start segement displays https://docs.missionpinball.org/en/latest/displays/display/alpha_numeric.html
   segment_displays:
