@@ -1,0 +1,50 @@
+#config_version=5
+mode:
+  start_events: ball_started
+  priority: 100
+
+slide_player:
+  mode_base_started:
+    widgets:
+      - type: text
+        text: (score)
+        number_grouping: true
+        min_digits: 2
+        font_size: 100
+        anchor_x: right
+        anchor_y: bottom
+        x: left+650
+        y: 850
+      - type: text
+        text: PLAYER (number)
+        y: 30%
+        x: 65%
+        font_size: 50
+      - type: text
+        text: BALL (ball)
+        y: 25%
+        x: 65%
+        font_size: 50
+      - type: text
+        text: 'Left Flipper Flips: (left_flipper_flips)'
+        y: 50%
+        x: 65%
+        color: blue
+        font_size: 50
+      - type: text
+        text: 'Right Inlane Hits: (right_inlane_hits)'
+        y: 40%
+        x: 65%
+        color: red
+        font_size: 50
+      - type: image
+        #image: labyrinth_backglass # video size is width: 1200 height: 800
+        image: labyrinth_backglass-v2
+
+variable_player:
+  s_right_inlane_active:
+    score: 100
+    right_inlane_hits: 1
+  s_left_flipper_active:
+    score: 1000
+    left_flipper_flips: 1

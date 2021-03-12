@@ -125,7 +125,11 @@ slides:
     widgets:
       - text: ATTRACT MODE
         type: text
-        x: 65%
+        font_size: 30
+        x: right
+        y: top
+        anchor_x: right
+        anchor_y: top
       # - type: image
       #   image: labyrinth_title
       #   opacity: 0
@@ -176,11 +180,7 @@ slide_player:
   init_done: welcome_slide
   mode_attract_started: attract_started
   game_started: segment_displays
-  ball_started:
-    widgets:
-      type: text
-      text: PLAYER (number) BALL (ball)
-      color: red
+  # ball_started: ball_started
 
 keyboard:
   z:
@@ -226,12 +226,17 @@ assets:
     breakloop:
       volume: 1.0
       priority: 100
-  
+    rezzo:
+      volume: 1.0
+      priority: 100
+
 videos:
   trailer_video:
     # width: 100
     # height: 70
     file: trailer.mp4
+    # file: trailer_hd.mp4
+    # file: trailer_hd_nosound.mp4
 
 sound_player:
   mode_attract_started:
@@ -241,3 +246,19 @@ sound_player:
   mode_attract_stopped:
     breakloop:
       action: stop
+  mode_base_started:
+    rezzo:
+      action: play
+
+modes:
+  - base
+  # - skillshot
+  # - both_ramps_made
+  # - multiball
+  # - some_mode
+
+player_vars:
+  right_inlane_hits:
+    initial_value: 0
+  left_flipper_flips:
+    initial_value: 0
