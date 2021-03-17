@@ -50,6 +50,15 @@ switches:
   s_right_inlane:
     number: 0-11
     # tags: playfield_active
+  s_left_inlane:
+    number: 
+  s_right_outlane:
+    number: 
+  s_left_outlane:
+    number: 
+  s_tilt_bob:
+    number:
+    tags: tilt_warning
 
 coils:
   c_flipper_left:
@@ -192,6 +201,15 @@ assets:
     rezzo:
       volume: 1.0
       priority: 100
+    wrong_01:
+      volume: 1.0
+      priority: 100
+    wrong_02:
+      volume: 1.0
+      priority: 100
+    wrong_03:
+      volume: 1.0
+      priority: 100
 
 videos:
   trailer_video:
@@ -217,6 +235,7 @@ modes:
   - base
   - attract
   - mode2
+  - tilt
   # - skillshot
   # - both_ramps_made
   # - multiball
@@ -241,3 +260,11 @@ lights:
     number:
   l_led3:
     number:
+  l_outlane_left:
+    number: 
+  l_inlane_left:
+    number: 
+  l_inlane_right:
+    number: 
+  l_outlane_right:
+    number: 

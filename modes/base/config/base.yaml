@@ -45,7 +45,7 @@ shots:
   my_first_shot:
     switch: s_right_inlane  # pick a switch that's valid in your machine
     show_tokens:
-      lights: l_led1 # pick an LED that's valid in your machine
+      lights: l_inlane_right # pick an LED that's valid in your machine
     profile: my_first_profile
 
 variable_player:

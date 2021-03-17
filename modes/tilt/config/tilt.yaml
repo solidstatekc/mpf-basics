@@ -1,0 +1,42 @@
+#config_version=5
+tilt:
+  multiple_hit_window: 300ms
+  settle_time: 5s
+  warnings_to_tilt: 3
+
+slides:
+  _overwrite: true   # this is important to overwrite the existing slides
+  tilt_warning_1:
+    widgets:
+      - type: text
+        text: "STOP IT"
+        font_size: 50
+    expire: 1s
+  tilt_warning_2:
+    widgets:
+      - type: text
+        text: "WARNING"
+        font_size: 50
+        y: top-2
+        anchor_y: top
+      - type: text
+        text: "SERIOUSLY STOP IT"
+        font_size: 50
+        y: top-18
+        anchor_y: top
+        expire: 1s
+    expire: 2s
+  tilt:
+    - type: text
+      text: TILT
+      font_size: 50
+
+# sound_player:
+#   tilt_warning_1:
+#     wrong_01:
+#       action: play
+
+sound_player:
+  tilt_warning_1: wrong_01
+  tilt_warning_2: wrong_02
+  tilt: wrong_03
