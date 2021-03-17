@@ -5,7 +5,7 @@ hardware:
 
 fast:
   driverboards: fast
-  ports: /dev/tty.usbserial-00003014B, /dev/tty.usbserial-00003014C
+  ports: /dev/tty.usbserial-00002014B, /dev/tty.usbserial-00002014C
   watchdog: 1000
   # debug: true
 
@@ -16,35 +16,40 @@ switches:
   s_right_flipper:
     number: 0-1
     tags: right_flipper
-  s_trough1:
+  # s_start:
+  #   number: 0-2
+  #   tags: start
+  s_start:
+    number: 0-12
+    tags: start
+  s_spinner_left:
     number: 0-2
-    type: NC
-  s_trough2:
+  s_trough1:
     number: 0-3
     type: NC
-  s_trough3:
+  s_trough2:
     number: 0-4
     type: NC
-  s_trough4:
+  s_trough3:
     number: 0-5
     type: NC
-  s_trough5:
+  s_trough4:
     number: 0-6
     type: NC
-  s_trough6:
+  s_trough5:
     number: 0-7
     type: NC
-  s_trough_jam:
+  s_trough6:
     number: 0-8
     type: NC
-  s_plunger:
+  s_trough_jam:
     number: 0-9
-  s_start:
+    type: NC
+  s_plunger:
     number: 0-10
-    tags: start
   s_right_inlane:
     number: 0-11
-    tags: playfield_active
+    # tags: playfield_active
 
 coils:
   c_flipper_left:
@@ -65,7 +70,8 @@ coils:
 
 ball_devices:
   bd_trough:
-    ball_switches: s_trough1, s_trough2, s_trough3, s_trough4, s_trough5, s_trough6, s_trough_jam
+    # ball_switches: s_trough1, s_trough2, s_trough3, s_trough4, s_trough5, s_trough6, s_trough_jam
+    ball_switches: s_trough1, s_trough_jam
     eject_coil: c_trough_eject
     tags: trough, home, drain
     jam_switch: s_trough_jam
@@ -121,43 +127,6 @@ slides:
       - type: rectangle
         width: 240
         height: 60
-  attract_started:
-    widgets:
-      - text: ATTRACT MODE
-        type: text
-        font_size: 30
-        x: right
-        y: top
-        anchor_x: right
-        anchor_y: top
-      # - type: image
-      #   image: labyrinth_title
-      #   opacity: 0
-      #   y: 0%
-      #   animations:
-      #     show_slide: 
-      #       # - property: opacity  # This step adjusts the "opacity" value of this widget.
-      #       #   value: 0  # Zero means the widget is transparent
-      #       - property: y
-      #         value: -50%  # In step 1, we set x to 5% (from 7% before)
-      #         duration: .25s
-      #       - property: opacity  # This is the 2nd step in the animation. It also sets the opacity.
-      #         value: 1  # But in this step, we're setting it back to 1 (opaque)
-      #         repeat: false  # We add this so the animation repeats. Otherwise it would just run once.
-      #       - property: y
-      #         value: 80%  # In step 2, we set it back to 7%
-      #         repeat: false  # and repeat!
-      #         duration: 5050ms
-      - type: image
-        #image: labyrinth_backglass # video size is width: 1200 height: 800
-        image: labyrinth_backglass-v2
-      - type: video
-        # video: mpf_hq
-        video: trailer_video
-        x: 65%
-        y: bottom+40%
-        width: 1600
-        height: 1000
 
   # start segement displays https://docs.missionpinball.org/en/latest/displays/display/alpha_numeric.html
   segment_displays:
@@ -178,14 +147,12 @@ slides:
 
 slide_player:
   init_done: welcome_slide
-  mode_attract_started: attract_started
   game_started: segment_displays
-  # ball_started: ball_started
 
 keyboard:
   z:
     switch: s_left_flipper
-  m:
+  '/':
     switch: s_right_flipper
   s:
     switch: s_start
@@ -212,17 +179,13 @@ keyboard:
   6:
     switch: s_trough6
     toggle: true
+  n:
+    event: mode2_start
+  m:
+    event: mode2_stop
 
 assets:
   sounds:
-    # default:
-    #   load: on_demand
-    # music:
-    #   track: music
-    # sfx:
-    #   track: sfx
-    # voice:
-    #   track: voice
     breakloop:
       volume: 1.0
       priority: 100
@@ -252,6 +215,8 @@ sound_player:
 
 modes:
   - base
+  - attract
+  - mode2
   # - skillshot
   # - both_ramps_made
   # - multiball
@@ -262,3 +227,17 @@ player_vars:
     initial_value: 0
   left_flipper_flips:
     initial_value: 0
+
+lights:
+  l_drop1:
+    number:
+    tags: drops
+  l_drop2:
+    number:
+    tags: drops
+  l_led1:
+    number:
+  l_led2:
+    number:
+  l_led3:
+    number:

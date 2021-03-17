@@ -1,0 +1,25 @@
+#show_version=5
+
+- duration: 100s
+  slides:
+    attract_started:
+      widgets:
+        - text: ATTRACT MODE
+          type: text
+          font_size: 30
+          x: right
+          y: top
+          anchor_x: right
+          anchor_y: top
+        - type: image
+          #image: labyrinth_backglass # video size is width: 1200 height: 800
+          image: labyrinth_backglass-v2
+        - type: video
+          # video: mpf_hq
+          video: trailer_video
+          x: 65%
+          y: bottom+40%
+          width: 1600
+          height: 1000
+
+##! mode: attract

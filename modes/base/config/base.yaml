@@ -41,10 +41,37 @@ slide_player:
         #image: labyrinth_backglass # video size is width: 1200 height: 800
         image: labyrinth_backglass-v2
 
+shots:
+  my_first_shot:
+    switch: s_right_inlane  # pick a switch that's valid in your machine
+    show_tokens:
+      lights: l_led1 # pick an LED that's valid in your machine
+    profile: my_first_profile
+
 variable_player:
-  s_right_inlane_active:
+  my_first_shot_my_first_profile_unlit_hit:
     score: 100
-    right_inlane_hits: 1
+  my_first_shot_my_first_profile_flashing_hit:
+    score: 1000
+  # s_right_inlane_active:
+  #   score: 100
+  #   right_inlane_hits: 1
+  # my_first_shot_hit:
+  #   score: 100
+  #   right_inlane_hits: 1
   s_left_flipper_active:
     score: 1000
     left_flipper_flips: 1
+  s_spinner_left_active:
+    score: 10000
+
+shot_profiles:
+  my_first_profile:
+    states:
+      - name: unlit  # step 1
+        show: off
+      - name: flashing  # step 2
+        show: flash
+      - name: lit  # step 3
+        show: on
+    loop: true
